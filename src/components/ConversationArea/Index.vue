@@ -13,7 +13,7 @@
         <div class="message column justify-around full-height q-pt-sm">
           <div class="row justify-between">
             <div class="column">
-              <span>Daniel Lopes</span>
+              <span>Rick do Zap</span>
               <span v-if="1 == 1"> Nova mensagem recebida </span>
               <span v-else> Veja a nossa ultima conversa... </span>
             </div>

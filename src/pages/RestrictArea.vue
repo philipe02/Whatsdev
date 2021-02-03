@@ -4,7 +4,11 @@
       <ConversationArea />
     </div>
 
-    <div class="column" v-if="1 === 2"></div>
+    <div class="column" v-if="2 === 2">
+      <TopBar :title="'Daniel Sena'" />
+      <ChatArea />
+      <MessageBar />
+    </div>
     <Empty v-else />
   </q-page>
 </template>
@@ -12,7 +16,9 @@
 <script>
 import Empty from "src/components/Empty/Index";
 import ConversationArea from "src/components/ConversationArea/Index";
-
+import TopBar from "src/components/TopBar/Index";
+import ChatArea from "src/components/ChatArea/Index";
+import MessageBar from "src/components/MessageBar/Index";
 export default {
   name: "MainLayout",
   data() {
@@ -21,6 +27,9 @@ export default {
   components: {
     Empty,
     ConversationArea,
+    TopBar,
+    ChatArea,
+    MessageBar,
   },
 };
 </script>

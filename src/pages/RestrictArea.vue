@@ -7,7 +7,7 @@
     <div class="column" v-if="selectedItem">
       <TopBar :title="nameConversation" />
       <ChatArea :currentUser="selectedItem" :newMessages="newMessages" />
-      <MessageBar />
+      <MessageBar :currentUser="selectedItem" @reload="reloadMessages" />
     </div>
     <Empty v-else />
   </q-page>
@@ -43,6 +43,9 @@ export default {
         .catch(() => {
           this.nameConversation = "Novo usuário";
         });
+    },
+    reloadMessages({ messageId }) {
+      this.newMessages = messageId;
     },
   },
   components: {

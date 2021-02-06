@@ -36,15 +36,38 @@
       text-color="grey"
       size="15px"
       class="q-mr-sm"
+      @click="sendMessage()"
     />
   </div>
 </template>
 
 <script>
+import api from "src/services/api";
+import { notify } from "src/utils";
 export default {
+  props: ["currentUser"],
   name: "MessageBar",
   data() {
-    return { text: "" };
+    return { text: "", myId: localStorage.getItem("myId") };
+  },
+  methods: {
+    async sendMessage() {
+      if (this.text != "" && this.currentUser) {
+        await api
+          .post("message", {
+            text: this.text,
+            user_destination: this.currentUser,
+            user_send: this.myId,
+          })
+          .then(() => {
+            this.$emit("reload", { messageId: response.data.id });
+            this.text = "";
+          })
+          .catch(() => {
+            notify("negative", error.response.data.message);
+          });
+      }
+    },
   },
 };
 </script>
